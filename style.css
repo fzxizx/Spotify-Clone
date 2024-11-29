@@ -7,8 +7,8 @@
 }
 
 body {
-    background-color: black;
-    color: white;
+  background-color: black;
+  color: white;
 }
 
 .left {
@@ -18,9 +18,6 @@ body {
 
 .right {
   width: 75vw;
-}
-
-.home {
 }
 
 .home ul li {
@@ -61,7 +58,7 @@ body {
   bottom: 0;
 }
 
-.footer a{
+.footer a {
   color: grey;
 }
 
@@ -74,7 +71,6 @@ body {
   justify-content: space-between;
 }
 
-.header > *{
+.header > * {
   padding: 20px;
 }
-
