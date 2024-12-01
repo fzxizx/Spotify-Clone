@@ -181,6 +181,17 @@ body {
   margin-bottom: 44px;
 }
 
+.hamburger {
+  display: none;
+}
+
+.hamburgerContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+}
+
 .songList ul {
   padding: 0 12px;
 }
@@ -251,4 +262,32 @@ body {
   justify-content: space-between;
 }
 
+@media (max-width:1400px) {
+  .left{
+    position: absolute;
+    left: -110%;
+    transition: all .3s;
+    z-index: 1;
+    width: 433px;
+    background-color: black;
+  }
 
+  .left .close{
+    position: absolute;
+    right: 31px;
+    top: 25px;
+    width: 29px;
+  }
+
+  .right{
+    width: 100vw;
+  }
+
+  .playbar{
+    width: 95vw;
+  }
+  
+  .hamburger {
+    display: block;
+  }
+}
