@@ -1,5 +1,5 @@
 console.log("Lets write JavaScript");
-
+let currentSong = new Audio();
 async function getSongs() {
     let a = await fetch("http://127.0.0.1:3000/songs")
     let response = await a.text();
@@ -16,8 +16,14 @@ async function getSongs() {
     return songs
 }
 
+const playMusic =(track)=>{
+    // let audio = new Audio("/songs/" + track)
+    currentSong.src = "/songs/" + track
+    currentSong.play()
+
+}
+
 async function main() {
-    
     let songs = await getSongs()
 
     let songUL = document.querySelector(".songList").getElementsByTagName("ul")[0];
@@ -32,6 +38,24 @@ async function main() {
             <img class="invert" src="./img/play.svg" alt="">
         </div></li>`;
     }
+    Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(e=>{
+        e.addEventListener("click", element =>{
+            console.log(e.querySelector(".info").firstElementChild.innerHTML)
+            playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
+        })
+    })
+
+    play.addEventListener("click", () =>{
+        if(currentSong.paused){
+            currentSong.play()
+            play.src = "./img/pause.svg"
+        }
+        else{
+           currentSong.pause()
+           play.src = "./img/play.svg"
+        }
+    })
+
 }
 
 main()
