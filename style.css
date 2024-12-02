@@ -6,6 +6,10 @@
   font-family: "Roboto", sans-serif;
 }
 
+.close {
+  display: none;
+}
+
 body {
   background-color: black;
   color: white;
@@ -82,12 +86,16 @@ body {
   padding: 16px;
 }
 
+.spotifyPlaylists h1{
+  padding: 16px;
+}
+
 .cardContainer {
   margin: 30px;
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 70vh;
 }
 
@@ -166,7 +174,7 @@ body {
   border-radius: 10px;
   padding: 12px;
   width: 70vw;
-  height: 40px;
+  min-height: 40px;
 }
 
 .songbuttons {
@@ -185,7 +193,7 @@ body {
   display: none;
 }
 
-.hamburgerContainer{
+.hamburgerContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -229,7 +237,7 @@ body {
 .seekbar {
   height: 4px;
   width: 98%;
-  background:  black;
+  background: black;
   border-radius: 10px;
   position: absolute;
   bottom: 0;
@@ -248,11 +256,12 @@ body {
   transition: left 0.5s;
 }
 
-.songbuttons img{
+.songbuttons img {
   cursor: pointer;
 }
 
-.songinfo, .songtime {
+.songinfo,
+.songtime {
   color: black;
   padding: 0 12px;
 }
@@ -260,34 +269,62 @@ body {
 .abovebar {
   display: flex;
   justify-content: space-between;
+  margin: 20px 0;
 }
 
-@media (max-width:1400px) {
-  .left{
+@media (max-width: 1400px) {
+  .left {
     position: absolute;
-    left: -110%;
-    transition: all .3s;
+    left: -120%;
+    transition: all 0.3s;
     z-index: 1;
-    width: 433px;
+    width: 373px;
     background-color: black;
   }
 
-  .left .close{
+  .left .close {
     position: absolute;
     right: 31px;
     top: 25px;
     width: 29px;
   }
 
-  .right{
+  .right {
     width: 100vw;
   }
 
-  .playbar{
-    width: 95vw;
+  .playbar {
+    width: calc(100vw - 105px);
   }
-  
+
+  .seekbar {
+    width: calc(100vw - 120px);
+  }
+
   .hamburger {
     display: block;
+  }
+
+  .right {
+    margin: 0;
+  }
+
+  .card {
+    width: 90vw;
+  }
+
+  .cardContainer {
+    margin: 0;
+    justify-content: center;
+  }
+
+  .close {
+    display: block;
+  }
+
+  .abovebar {
+    flex-direction: column;
+    gap: 23px;
+    align-items: center;
   }
 }

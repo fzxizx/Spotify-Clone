@@ -84,7 +84,7 @@ async function main() {
     currentSong.addEventListener("timeupdate", () => {
         console.log(currentSong.currentTime, currentSong.duration);
         document.querySelector(".songtime").innerHTML = 
-        `${secondsToMinutesSeconds(currentSong.currentTime)}/
+        `${secondsToMinutesSeconds(currentSong.currentTime)} / 
         ${secondsToMinutesSeconds(currentSong.duration)}`
         document.querySelector(".circle").style.left =
         (currentSong.currentTime/ currentSong.duration) * 100 + "%";
@@ -101,9 +101,19 @@ async function main() {
     })
 
     document.querySelector(".close").addEventListener("click", () =>{
-        document.querySelector(".left").style.left = "-110%"
+        document.querySelector(".left").style.left = "-120%"
     })
 
+    previous.addEventListener("click", ()=>{
+        console.log("previos clicked")
+        console.log(currentSong)
+    })
+    
+    next.addEventListener("click", ()=>{
+        console.log("next clicked")
+        console.log(currentSong.src)
+
+    })
 
 }
 
