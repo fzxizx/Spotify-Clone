@@ -217,9 +217,13 @@ body {
   border-radius: 5px;
 }
 
-.songList info {
+.songList .info {
   font-size: 13px;
   width: 344px;
+}
+
+.info div{
+  word-break: break-all;
 }
 
 .playnow {
@@ -264,6 +268,7 @@ body {
 .songtime {
   color: black;
   padding: 0 12px;
+  width: 250px;
 }
 
 .abovebar {
@@ -280,6 +285,10 @@ body {
     z-index: 1;
     width: 373px;
     background-color: black;
+  }
+
+  .songinfo, .songtime {
+    width: auto;
   }
 
   .left .close {

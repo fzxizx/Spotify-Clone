@@ -1,9 +1,11 @@
 console.log("Lets write JavaScript");
 let currentSong = new Audio();
+let songs;
+
 
 function secondsToMinutesSeconds(seconds) {
     if (isNaN(seconds) || seconds < 0) {
-        return "Invalid input";
+        return "00:00";
     }
 
     const minutes = Math.floor(seconds / 60);
@@ -33,20 +35,23 @@ async function getSongs() {
 }
 
 
-const playMusic = (track, pause=false) => {
-    // let audio = new Audio("/songs/" + track)
-    currentSong.src = "/songs/" + track
-    if(!pause){
-        currentSong.play()
-        play.src = "./img/pause.svg"
-    }
-    document.querySelector(".songinfo").innerHTML = track
-    document.querySelector(".songtime").innerHTML = "00:00 / 00:00"
+const playMusic = (track, pause = false) => {
+    currentSong.src = "/songs/" + track;
 
-}
+    if (!pause) {
+        currentSong.play();
+        play.src = "./img/pause.svg";
+    }
+
+    const cleanTrackName = track.replaceAll("%20", " ").replace(".mp3", "");
+    document.querySelector(".songinfo").innerHTML = cleanTrackName;
+
+    document.querySelector(".songtime").innerHTML = "00:00 / 00:00";
+};
+
 
 async function main() {
-    let songs = await getSongs()
+    songs = await getSongs()
     playMusic(songs[0], true)
 
     let songUL = document.querySelector(".songList").getElementsByTagName("ul")[0];
@@ -105,14 +110,23 @@ async function main() {
     })
 
     previous.addEventListener("click", ()=>{
+        currentSong.pause()
         console.log("previos clicked")
         console.log(currentSong)
+        let index = songs.indexOf(currentSong.src.split("/").slice(-1) [0])
+        if((index-1) >= 0) {
+            playMusic(songs[index-1])
+        }
     })
     
     next.addEventListener("click", ()=>{
+        currentSong.pause()
         console.log("next clicked")
-        console.log(currentSong.src)
 
+        let index = songs.indexOf(currentSong.src.split("/").slice(-1) [0])
+        if((index+1) < songs.length) {
+            playMusic(songs[index+1])
+        }
     })
 
 }
